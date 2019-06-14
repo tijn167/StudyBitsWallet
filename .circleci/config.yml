@@ -6,6 +6,7 @@ jobs:
       - image: circleci/android:api-28
     environment:
       JVM_OPTS: -Xmx3200m
+      ENDPOINT_IP: 127.0.0.1
     steps:
       - checkout
       - run: sh ./.circleci.sh
