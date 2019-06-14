@@ -18,6 +18,7 @@ android {
 
     lintOptions {
         lintConfig file("lint.xml")
+        abortOnError false
     }
 
     buildTypes {
