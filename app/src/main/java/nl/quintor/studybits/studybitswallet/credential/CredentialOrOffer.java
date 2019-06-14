@@ -10,6 +10,7 @@ public class CredentialOrOffer {
     private String value;
     private CredentialOffer credentialOffer;
     private CredentialInfo credential;
+    private int pos;
 
     private CredentialOrOffer(University university, String value, CredentialOffer credentialOffer, CredentialInfo credential) {
         this.university = university;
@@ -20,7 +21,7 @@ public class CredentialOrOffer {
     }
 
     public static CredentialOrOffer fromCredentialOffer(University university, CredentialOffer credentialOffer) {
-        return new CredentialOrOffer(university, credentialOffer.getSchemaId(), credentialOffer, null);
+        return new CredentialOrOffer(university, credentialOffer.getSchemaId() , credentialOffer, null);
     }
 
     public static CredentialOrOffer fromCredential(University university, CredentialInfo credential) {
@@ -45,5 +46,9 @@ public class CredentialOrOffer {
 
     public CredentialInfo getCredential() {
         return credential;
+    }
+
+    public void setPosition(int position) {
+        this.pos = position;
     }
 }

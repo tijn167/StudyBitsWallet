@@ -80,16 +80,18 @@ public class UniversityActivity extends WalletActivity {
                 String username = dialogFragment.getUsernameText();
                 String password = dialogFragment.getPasswordText();
                 Log.d("STUDYBITS", "Logging in with endpoint " + endpoint + " and username " + username);
-
+                Log.d("STUDYBITS", studentWallet.getMainDid());
                 IndyClient indyClient = new IndyClient(studentWallet, AppDatabase.getInstance(getApplicationContext()));
 
 
                 try {
+                    Log.i("STUDYBITS", endpoint);
+                    Log.i("STUDYBITS", name);
                     University university = indyClient.connect(endpoint, name, username, password, did);
 
                     Snackbar.make(activity.getWindow().getDecorView(), "Connected to " + university.getName() + "!", Snackbar.LENGTH_SHORT).show();
                 } catch (Exception e) {
-                    Log.e("STUDYBITS", "Exception on accepting connection request" + e.getMessage());
+                    Log.e("STUDYBITS", "Exception on accepting connection request" + e.getLocalizedMessage());
 
                 }
             });

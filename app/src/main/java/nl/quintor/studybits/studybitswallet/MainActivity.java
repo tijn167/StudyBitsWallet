@@ -26,26 +26,21 @@ import org.apache.commons.io.filefilter.TrueFileFilter;
 import org.hyperledger.indy.sdk.LibIndy;
 import org.hyperledger.indy.sdk.pool.Pool;
 
-import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.net.CookieHandler;
 import java.net.CookieManager;
 import java.net.CookiePolicy;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.nio.charset.Charset;
-import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import nl.quintor.studybits.indy.wrapper.IndyPool;
 import nl.quintor.studybits.indy.wrapper.IndyWallet;
 import nl.quintor.studybits.indy.wrapper.Prover;
 import nl.quintor.studybits.indy.wrapper.message.IndyMessageTypes;
-import nl.quintor.studybits.indy.wrapper.message.MessageEnvelope;
-import nl.quintor.studybits.indy.wrapper.util.JSONUtil;
 import nl.quintor.studybits.indy.wrapper.util.PoolUtils;
+
 import nl.quintor.studybits.studybitswallet.credential.CredentialActivity;
 import nl.quintor.studybits.studybitswallet.exchangeposition.ExchangePositionActivity;
 import nl.quintor.studybits.studybitswallet.exchangeposition.StudyBitsMessageTypes;
@@ -108,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, ExchangePositionActivity.class);
             startActivity(intent);
         });
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener((View view) -> {

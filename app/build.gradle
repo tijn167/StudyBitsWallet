@@ -79,5 +79,12 @@ dependencies {
     androidTestImplementation 'com.android.support.test:rules:1.0.2'
 
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
+    // https://mvnrepository.com/artifact/com.android.support.test.espresso/espresso-contrib
+    androidTestImplementation (group: 'com.android.support.test.espresso', name: 'espresso-contrib', version: '3.0.1'){
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude module: 'recyclerview-v7'
+    }
+
 
 }

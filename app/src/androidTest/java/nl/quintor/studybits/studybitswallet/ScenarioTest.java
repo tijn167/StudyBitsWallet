@@ -2,38 +2,34 @@ package nl.quintor.studybits.studybitswallet;
 
 import android.Manifest;
 import android.content.Intent;
-import android.net.Uri;
+
 import android.support.test.espresso.IdlingPolicies;
-import android.support.test.espresso.action.ViewActions;
-import android.support.test.espresso.matcher.RootMatchers;
-import android.support.test.filters.LargeTest;
+import android.support.test.espresso.contrib.RecyclerViewActions;
+import android.support.test.filters.*;
 import android.support.test.rule.ActivityTestRule;
 import android.support.test.rule.GrantPermissionRule;
-import android.support.test.runner.AndroidJUnit4;
 import android.util.Log;
-import android.view.WindowManager;
+
 
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
 import java.util.concurrent.TimeUnit;
 
+
 import nl.quintor.studybits.studybitswallet.university.UniversityActivity;
 
-import static android.support.test.espresso.Espresso.onView;
-import static android.support.test.espresso.Espresso.pressBack;
+import static android.support.test.espresso.Espresso.*;
 import static android.support.test.espresso.action.ViewActions.click;
 import static android.support.test.espresso.action.ViewActions.typeText;
 import static android.support.test.espresso.assertion.ViewAssertions.matches;
 import static android.support.test.espresso.matcher.ViewMatchers.isDisplayed;
-import static android.support.test.espresso.matcher.ViewMatchers.isRoot;
 import static android.support.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
-import static android.support.test.espresso.matcher.ViewMatchers.withParent;
 import static android.support.test.espresso.matcher.ViewMatchers.withText;
-import static org.hamcrest.core.AllOf.allOf;
+import static org.hamcrest.CoreMatchers.allOf;
+
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -88,7 +84,7 @@ public class ScenarioTest {
         // Enter studentID
         onView(withId(R.id.student_id_text))
                 .check(matches(isDisplayed()))
-                .perform(typeText("12345678"));
+                .perform(typeText("2102241"));
 
         // Enter password
         onView(withId(R.id.password_text))
@@ -103,18 +99,19 @@ public class ScenarioTest {
         onView(withText("Rijksuniversiteit Groningen"))
                 .check(matches(isDisplayed()));
 
+        Log.e("STUDYBITS", "REACHED");
         // Navigate to credentials via pressing back on toolbar
         onView(withContentDescription(R.string.abc_action_bar_up_description)).perform(click());
         onView(withId(R.id.button_credential))
                 .perform(click());
 
-        // Check presence of credential
-        onView(withText("Rijksuniversiteit Groningen"))
-                .check(matches(isDisplayed()));
+//        //Check if credentials are present
+//        Log.e("MARCO", "Komt hier");
+//        onView(allOf(, withText("Rijksuniversiteit Groningen")));
+//        Log.e("MARCO", "En hier");
 
-        // Accept credential
-        onView(withText("Rijksuniversiteit Groningen"))
-                .perform(click());
+       // Accept credential
+        onView(withId(2131230775)).perform(RecyclerViewActions.actionOnItemAtPosition(0, click()));
 
         // Launch connection dialog
         intent = new Intent();
